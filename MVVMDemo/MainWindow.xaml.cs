@@ -26,7 +26,7 @@ namespace MVVMDemo
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MVVMDemo.ViewModel.StudentViewModel();
+            this.DataContext = new ViewModel.StudentViewModel();
         }
 
         private void StudentViewControl_Loaded(object sender, RoutedEventArgs e)

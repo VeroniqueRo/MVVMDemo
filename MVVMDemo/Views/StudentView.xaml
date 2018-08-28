@@ -11,35 +11,65 @@
    mc:Ignorable = "d" 
    d:DesignHeight = "300" d:DesignWidth = "300">
 
+    <!--<UserControl.Resources>
+        <DataTemplate x:Key = "studentsTemplate">
+
+            <StackPanel Orientation = "Horizontal">
+                <TextBox Text = "{Binding Path = FirstName, Mode = TwoWay}" 
+               Width = "100" Margin = "3 5 3 5"/>
+
+                <TextBox Text = "{Binding Path = LastName, Mode = TwoWay}" 
+               Width = "100" Margin = "0 5 3 5"/>
+
+                <TextBlock Text = "{Binding Path = FullName, Mode = OneWay}" 
+               Margin = "0 5 3 5"/>
+
+            </StackPanel>
+
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid>
-        <StackPanel HorizontalAlignment = "Left">
+        <ListBox 
+         ItemsSource = "{Binding Students}" 
+         ItemTemplate = "{StaticResource studentsTemplate}"/>
+    </Grid>-->
 
-            <ItemsControl ItemsSource = "{Binding Path = Students}">
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation = "Horizontal">
-                            <StackPanel Orientation = "Vertical">
+    <Grid>
+            <StackPanel HorizontalAlignment = "Left">
 
-                                <TextBox Text = "{Binding Path = FirstName, Mode = TwoWay}" TextAlignment="Center" Width = "150" Margin = "3 5 3 5"/>
-                                <TextBox Text = "{Binding Path = LastName, Mode = TwoWay}" TextAlignment="Center" Width = "150" Margin = "0 5 3 35"/>
+                <ItemsControl ItemsSource = "{Binding Path = Students}">
+                
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                        
+                            <StackPanel Orientation = "Horizontal">
+
+                                <StackPanel Orientation = "Vertical">
+
+                                    <TextBox Text = "{Binding Path = FirstName, Mode = TwoWay}" TextAlignment="Center" Width = "150" Margin = "3 5 3 5"/> 
+                                     <!--Liaison définit sur TwoWay : le modele est mis à jour et le TextBox est à nouveau mis à jour à partir du modèle-->
+                                    <TextBox Text = "{Binding Path = LastName, Mode = TwoWay}" TextAlignment="Center" Width = "150" Margin = "0 5 3 35"/>
+
+                                </StackPanel>
+                                <StackPanel Orientation = "Vertical">
+
+                                    <TextBlock Text = "Nom complet : " TextAlignment="Left" TextDecorations="Baseline"  Margin = "10 5 3 5"/>
+                                     <!--Liaison définit sur OneWay : l'affichage est modifié automatiquement mais on ne peut pas le modifer directement--> 
+                                    <TextBlock Text = "{Binding Path = FullName, Mode = OneWay}" TextAlignment="Left" Margin = "10 5 3 5"/> 
+
+                                </StackPanel>
 
                             </StackPanel>
-                            <StackPanel Orientation = "Vertical">
 
-                                <TextBlock Text = "Nom complet : " TextAlignment="Left" TextDecorations="Baseline"  Margin = "10 5 3 5"/>
-                                <TextBlock Text = "{Binding Path = FullName, Mode = OneWay}" TextAlignment="Left" Margin = "10 5 3 5"/>
-                                
-                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
 
-                        </StackPanel>
+                </ItemsControl>
 
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-
-            </ItemsControl>
-
-        </StackPanel>
-    </Grid>
+            </StackPanel>
+       
+        </Grid>
 
 </UserControl>
